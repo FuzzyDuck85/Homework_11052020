@@ -4,7 +4,7 @@ class Team
 
   # attr_reader :team_name, :players, :coach
   # attr_writer :team_name, :players, :coach
-  attr_accessor :team_name, :players, :coach
+  attr_accessor :team_name, :players, :coach, :points
   # constuctor
   def initialize(team_name, coach_name)
     # @whatever is an instance variable
@@ -14,14 +14,6 @@ class Team
     @points = 0
   end
 
-  def find_player(players, name)
-    for player in @players
-      if player[:name] == name
-        return player
-      end
-    end
-    return false
-  end
   # getters
   # # 1
   # def team_name
@@ -45,5 +37,23 @@ class Team
   # def new_player(new)
   #   @players.push(new)
   # end
-
+  #6
+  def find_player(player)
+    found = false
+    for name in @players
+      if player == name
+        found = true
+      end
+    end
+    return found
+  end
+  #7
+  def has_team_won(result)
+    if result == "won"
+      @points += 5
+    else @account_type == "lost"
+      @points += 0
+    end
+    p @points
+  end
 end

@@ -36,8 +36,16 @@ class TestTeam < MiniTest::Test
     assert_equal(5, new_sports_team.players().count)
   end
   #6
-  def itest_find_player(array, name)
+  def test_find_player
     new_sports_team = Team.new("Red Dwarf", "Rimmer")
-    assert_equal("Holly", new_sports_team.players)
+    player_found = new_sports_team.find_player("Holly")
+    assert_equal(true, player_found)
   end
+  #7
+  def test_has_team_won
+    new_sports_team = Team.new("Red Dwarf", "Rimmer")
+    new_sports_team.has_team_won("won")
+    assert_equal(5, new_sports_team.points)
+  end
+
 end
